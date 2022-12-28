@@ -1,7 +1,7 @@
 from tkinter import *
 visas_langas = Tk()
 
-#atstatyti = ""
+atstatyti = StringVar()
 
 def paspaudus():
     vardas = laukelis_vardo.get()
@@ -9,13 +9,14 @@ def paspaudus():
 
 
 def isvalyti():
-    global atstatyti
-    atstatyti = laukelis_vardo.get()
+    atstatyti.set(laukelis_vardo.get())
     laukelis_vardo.delete(0, 'end')
     ka_parodys_paspaudus["text"] = ""
 
+
 def atkurti():
-    ka_parodys_paspaudus["text"] = laukelis_vardo.insert(0, "ok")
+    laukelis_vardo.insert(0, atstatyti.get())  # atkuria varda
+    paspaudus()  # atkuria ir pasisveikinima
 
 def iseiti():
     visas_langas.destroy()
